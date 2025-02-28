@@ -1,0 +1,38 @@
+/**
+ * @package		CGNewFlag content plugin
+ * @author		ConseilGouz
+ * @copyright	Copyright (C) 2025 ConseilGouz. All rights reserved.
+ * @license		GNU/GPL v3; see LICENSE.php
+ * 
+ *						>>>	CSS for Admin display module  <<<
+ */
+#general .control-group:nth-of-type(4){ /* contexts list */
+	width:50%;
+}
+#general .control-group:nth-of-type(7){ /* type */
+	float:left; width:50%;
+}
+#general .control-group:nth-of-type(8){ /* Icon value */
+	width:50%;
+}
+#general .control-group:nth-of-type(9){ /* Color */
+	clear:both;float:left;width:50%;
+}
+#general .control-group:nth-of-type(10){ /* color picker */
+	float:right;width:50%;
+}
+#general .control-group:nth-of-type(11){ /* color variable*/
+	float:right;width:50%;
+}
+#general .control-group:nth-of-type(12){ /* Font color */
+	clear:both;float:left;width:50%;
+}
+#general .control-group:nth-of-type(13){ /* font color picker*/
+	float:right;width:50%;
+}
+#general .control-group:nth-of-type(14){ /* font color variable*/
+	float:right;width:50%;
+}
+#general .control-group:nth-of-type(15){ /* font size*/
+	clear:both;
+}

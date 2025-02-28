@@ -1,0 +1,14 @@
+<changelogs>
+	<changelog>
+		<element>cgnewflag</element>
+		<type>plugin</type>
+		<group>content</group>
+		<version>1.0.0</version>
+        <note>
+            <item>Update : 27/02/2025</item>
+        </note>
+         <addition>
+            <item>New content plugin</item>
+        </addition>
+	</changelog>
+</changelogs>
