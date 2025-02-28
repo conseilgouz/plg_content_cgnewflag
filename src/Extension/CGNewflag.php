@@ -51,6 +51,12 @@ final class CGNewflag extends CMSPlugin implements SubscriberInterface
                 $document = Factory::getApplication()->getDocument();
                 $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
                 $wa->registerAndUseStyle('cgnewflag', $plg.'/css/cgnewflag.css');
+				if ($css = $this->params->get('css','')) {
+					$customCSS = <<< CSS
+					$css
+					CSS;					
+				    $wa->addInlineStyle($customCSS, ['name' => 'cgnewflag.asset']);
+				}
                 if ((bool)Factory::getConfig()->get('debug')) { // Mode debug
                     $document->addScript(''.URI::base(true).'/'.$plg.'/js/cgnewflag.js');
                 } else {

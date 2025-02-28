@@ -3,11 +3,23 @@
 		<element>cgnewflag</element>
 		<type>plugin</type>
 		<group>content</group>
+		<version>1.0.2</version>
+        <note>
+            <item>Update : 28/02/2025</item>
+        </note>
+        <addition>
+            <item>Cutom CSS</item>
+        </addition>
+	</changelog>
+	<changelog>
+		<element>cgnewflag</element>
+		<type>plugin</type>
+		<group>content</group>
 		<version>1.0.1</version>
         <note>
             <item>Update : 28/02/2025</item>
         </note>
-         <fix>
+        <fix>
             <item>Add flag to introtext</item>
             <item>Set default type to badge</item>
         </fix>
@@ -20,7 +32,7 @@
         <note>
             <item>Update : 27/02/2025</item>
         </note>
-         <addition>
+        <addition>
             <item>New content plugin</item>
         </addition>
 	</changelog>
