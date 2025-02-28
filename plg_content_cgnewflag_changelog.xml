@@ -3,6 +3,19 @@
 		<element>cgnewflag</element>
 		<type>plugin</type>
 		<group>content</group>
+		<version>1.0.1</version>
+        <note>
+            <item>Update : 28/02/2025</item>
+        </note>
+         <fix>
+            <item>Add flag to introtext</item>
+            <item>Set default type to badge</item>
+        </fix>
+	</changelog>
+	<changelog>
+		<element>cgnewflag</element>
+		<type>plugin</type>
+		<group>content</group>
 		<version>1.0.0</version>
         <note>
             <item>Update : 27/02/2025</item>

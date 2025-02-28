@@ -29,13 +29,11 @@ final class CGNewflag extends CMSPlugin implements SubscriberInterface
     }
     public function onPrepare($event)
     {
-
         $context = $event[0];
         $contexts = explode(',', $this->params->get('contexts', 'com_content.article,com_content.category'));
         if (!in_array($context, $contexts)) {
             return true;
         }
-        // check chglog tags
         $article = $event[1];
         $date = $this->params->get('datefield', 'publish_up');
         if (isset($article->$date)) {
@@ -48,6 +46,7 @@ final class CGNewflag extends CMSPlugin implements SubscriberInterface
             }
             if ($new) {
                 $article->text = $new.$article->text;
+				$article->introtext = $new.$article->introtext;
                 $plg	= 'media/plg_content_cgnewflag/';
                 $document = Factory::getApplication()->getDocument();
                 $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
@@ -64,7 +63,6 @@ final class CGNewflag extends CMSPlugin implements SubscriberInterface
                     'plg_content_cgnewflag',
                     array('bg' => $bg, 'font' => $font,'fontsize' => $fontsize)
                 );
-
                 return true;
             }
         }
