@@ -20,44 +20,49 @@ final class CGNewflag extends CMSPlugin implements SubscriberInterface
 {
     public $myname = 'CGNewflag';
     protected $autoloadLanguage = true;
+    protected $article_id;
+    protected $article_title;
+    protected $view;
 
     public static function getSubscribedEvents(): array
     {
         return [
-            'onContentPrepare'   => 'onPrepare',
+            'onContentBeforeDisplay'	=> 'onBefore',
         ];
     }
-    public function onPrepare($event)
+    public function onBefore($event)
     {
-        $context = $event[0];
+        $context = $event->getContext();
         $contexts = explode(',', $this->params->get('contexts', 'com_content.article,com_content.category'));
         if (!in_array($context, $contexts)) {
             return true;
         }
-        $article = $event[1];
+        $input               = Factory::getApplication()->input;
+        $this->view          = $input->getCmd('view');
+        $this->article_id    = $event->getItem()->id;
+        $this->article_title = $event->getItem()->title;
         $date = $this->params->get('datefield', 'publish_up');
-        if (isset($article->$date)) {
+        if (isset($event->getItem()->$date)) {
             $nbday = $this->params->get('length', 10);
             $tmp = date('Y-m-d H:i:s', mktime(date("H"), date("i"), 0, date("m"), date("d") - intval($nbday), date("Y")));
             if ($this->params->get('type', 'badge') == 'badge') {
-                $new = ($tmp < $article->$date) ? ' <span class="cgnewflag_badge">'.Text::_('PLG_CONTENT_CGNEWFLAG_NEW').'</span> ' : '';
+                $new = ($tmp < $event->getItem()->$date) ? '<span class="cgnewflag_badge">'.Text::_('PLG_CONTENT_CGNEWFLAG_NEW').'</span>' : '';
             } else {
-                $new = ($tmp < $article->$date) ? ' <i class="cgnewflag_icon fa-solid '.$this->params->get('icon', 'fa-star').'" title="'.Text::_('PLG_CONTENT_CGNEWFLAG_NEW').'"></i> ' : '';
+                $new = ($tmp < $event->getItem()->$date) ? '<i class="cgnewflag_icon fa-solid '.$this->params->get('icon', 'fa-star').'" title="'.Text::_('PLG_CONTENT_CGNEWFLAG_NEW').'"></i>' : '';
             }
             if ($new) {
-                $article->text = $new.$article->text;
-				$article->introtext = $new.$article->introtext;
+                $app = Factory::getApplication();
                 $plg	= 'media/plg_content_cgnewflag/';
-                $document = Factory::getApplication()->getDocument();
-                $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+                $document = $app->getDocument();
+                $wa = $document->getWebAssetManager();
                 $wa->registerAndUseStyle('cgnewflag', $plg.'/css/cgnewflag.css');
-				if ($css = $this->params->get('css','')) {
-					$customCSS = <<< CSS
+                if ($css = $this->params->get('css', '')) {
+                    $customCSS = <<< CSS
 					$css
-					CSS;					
-				    $wa->addInlineStyle($customCSS, ['name' => 'cgnewflag.asset']);
-				}
-                if ((bool)Factory::getConfig()->get('debug')) { // Mode debug
+					CSS;
+                    $wa->addInlineStyle($customCSS, ['name' => 'cgnewflag.asset']);
+                }
+                if ((bool)$app->getConfig()->get('debug')) { // Mode debug
                     $document->addScript(''.URI::base(true).'/'.$plg.'/js/cgnewflag.js');
                 } else {
                     $wa->registerAndUseScript('cgnewflag', $plg.'/js/cgnewflag.js');
@@ -69,9 +74,8 @@ final class CGNewflag extends CMSPlugin implements SubscriberInterface
                     'plg_content_cgnewflag',
                     array('bg' => $bg, 'font' => $font,'fontsize' => $fontsize)
                 );
-                return true;
+                $event->addResult($new);
             }
         }
-        return true;
     }
 }
