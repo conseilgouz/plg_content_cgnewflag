@@ -3,6 +3,19 @@
 		<element>cgnewflag</element>
 		<type>plugin</type>
 		<group>content</group>
+		<version>1.0.5</version>
+        <note>
+            <item>Update : 01/02/2025</item>
+        </note>
+        <fix>
+            <item>Remove cgnewflag from page title</item>
+            <item>Check H2 tag for cgnewflag tags</item>
+        </fix>
+	</changelog>
+	<changelog>
+		<element>cgnewflag</element>
+		<type>plugin</type>
+		<group>content</group>
 		<version>1.0.4</version>
         <note>
             <item>Update : 01/02/2025</item>

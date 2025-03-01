@@ -18,14 +18,17 @@ document.addEventListener('DOMContentLoaded', function() {
 	if (font.startsWith('-')) font = 'var('+font+')';
 	if (!bg) return false;
 	if (cgnewflag_options.posflg != 'header') { // before/after title
-		headers = document.querySelectorAll('.page-header');
+		headers = document.querySelectorAll('h2');
 		for (var i=0; i< headers.length;i++) {
 			inner = headers[i].innerHTML;
-			if (inner.indexOf('&lt;cgnewflag&gt;') > 0) {
-				inner.replace('&lt;cgnewflag&gt;',cgnewflag_options.newstr);
+			if (inner.indexOf('<cgnewflag>') >= 0) {
+				headers[i].innerHTML = inner.replace('<cgnewflag>',cgnewflag_options.newstr);
+			}
+			if (inner.indexOf('&lt;cgnewflag&gt;') >= 0) {
 				headers[i].innerHTML = inner.replace('&lt;cgnewflag&gt;',cgnewflag_options.newstr);
 			}
 		}
+		document.title = document.title.replace('<cgnewflag>','');
 	}
 	badges = document.querySelectorAll('.cgnewflag_badge');
 	for (var i=0; i< badges.length;i++) {
