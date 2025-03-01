@@ -1,12 +1,10 @@
 <?php
-
 /**
  * @package		CGNewFlag content plugin
  * @author		ConseilGouz
  * @copyright	Copyright (C) 2025 ConseilGouz. All rights reserved.
  * @license		GNU/GPL v2; see LICENSE.php
  **/
-
 namespace ConseilGouz\Plugin\Content\CGNewflag\Extension;
 
 defined('_JEXEC') or die('Restricted access');
@@ -72,9 +70,16 @@ final class CGNewflag extends CMSPlugin implements SubscriberInterface
                 $fontsize = $this->params->get('font-size', '1');
                 $document->addScriptOptions(
                     'plg_content_cgnewflag',
-                    array('bg' => $bg, 'font' => $font,'fontsize' => $fontsize)
+                    array(  'bg' => $bg, 'font' => $font,'fontsize' => $fontsize,
+                            'newstr' => $new,'posflg' => $this->params->get('posflg', 'before'))
                 );
-                $event->addResult($new);
+                if ($this->params->get('posflg', 'before') == 'header') {
+                    $event->addResult($new);
+                } elseif ($this->params->get('posflg', 'before') == 'after') { // done in js
+                    $event->getItem()->title .= '<cgnewflag>';
+                } elseif ($this->params->get('posflg', 'before') == 'before') { // done in js
+                    $event->getItem()->title = '<cgnewflag>'.$event->getItem()->title;
+                }
             }
         }
     }

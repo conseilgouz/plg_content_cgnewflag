@@ -7,7 +7,7 @@
 	<authorUrl>www.conseilgouz.com</authorUrl>
 	<copyright>Copyright (C) 2025 ConseilGouz. All rights reserved.</copyright>
 	<license>GNU/GPL</license>
-	<version>1.0.3</version>
+	<version>1.0.4</version>
 	<description>PLG_CONTENT_CGNEWFLAG_DESC</description>
 	<namespace path="src">ConseilGouz\Plugin\Content\CGNewflag</namespace>
 	<scriptfile>script.php</scriptfile>
@@ -33,6 +33,13 @@
 			addfieldprefix="ConseilGouz\Plugin\Content\CGNewflag\Field"
 			addruleprefix="ConseilGouz\Plugin\Content\CGNewflag\Rule">
 			<field name="version" type="version" extension="cgnewflag" margintop="-3em" xml="/plugins/content/cgnewflag/cglike.xml"/>
+			<field name="posflg"
+				type="radio" class="btn-group" default="before"
+				label="PLG_CONTENT_CGNEWFLAG_POSFLAG" description="PLG_CONTENT_CGNEWFLAG_POSFLAG_DESC">
+				<option value="before">PLG_CONTENT_CGNEWFLAG_POSFLAG_BEFORE</option> 
+				<option value="after">PLG_CONTENT_CGNEWFLAG_POSFLAG_AFTER</option> 
+				<option value="header">PLG_CONTENT_CGNEWFLAG_POSFLAG_HEADER</option> 
+			</field>
 			<field name="contexts" type="textarea" label="PLG_CONTENT_CGNEWFLAG_CONTEXTS" description="PLG_CONTENT_CGNEWFLAG_CONTEXTS_DESC" 
 			default="com_content.article,com_content.category,com_content.featured"/>
 			<field name="datefield"

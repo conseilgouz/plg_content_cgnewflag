@@ -3,6 +3,18 @@
 		<element>cgnewflag</element>
 		<type>plugin</type>
 		<group>content</group>
+		<version>1.0.4</version>
+        <note>
+            <item>Update : 01/02/2025</item>
+        </note>
+        <addition>
+            <item>Add flag position</item>
+        </addition>
+	</changelog>
+	<changelog>
+		<element>cgnewflag</element>
+		<type>plugin</type>
+		<group>content</group>
 		<version>1.0.3</version>
         <note>
             <item>Update : 01/02/2025</item>

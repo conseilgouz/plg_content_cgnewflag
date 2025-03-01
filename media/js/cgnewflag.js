@@ -1,8 +1,8 @@
 /**
  * @package		CGNewFlag content plugin
  * @author		ConseilGouz
- * @copyright	Copyright (C) 2024 ConseilGouz. All rights reserved.
- * @license		GNU/GPL v2; see LICENSE.php
+ * @copyright	Copyright (C) 2025 ConseilGouz. All rights reserved.
+ * @license		GNU/GPL v3; see LICENSE.php
  **/
 document.addEventListener('DOMContentLoaded', function() {
 	if (typeof Joomla === 'undefined' || typeof Joomla.getOptions === 'undefined') {
@@ -17,7 +17,16 @@ document.addEventListener('DOMContentLoaded', function() {
 	font = cgnewflag_options.font;
 	if (font.startsWith('-')) font = 'var('+font+')';
 	if (!bg) return false;
-	
+	if (cgnewflag_options.posflg != 'header') { // before/after title
+		headers = document.querySelectorAll('.page-header');
+		for (var i=0; i< headers.length;i++) {
+			inner = headers[i].innerHTML;
+			if (inner.indexOf('&lt;cgnewflag&gt;') > 0) {
+				inner.replace('&lt;cgnewflag&gt;',cgnewflag_options.newstr);
+				headers[i].innerHTML = inner.replace('&lt;cgnewflag&gt;',cgnewflag_options.newstr);
+			}
+		}
+	}
 	badges = document.querySelectorAll('.cgnewflag_badge');
 	for (var i=0; i< badges.length;i++) {
 		badges[i].style.backgroundColor = bg;

@@ -6,33 +6,33 @@
  * 
  *						>>>	CSS for Admin display module  <<<
  */
-#general .control-group:nth-of-type(4){ /* contexts list */
+#general .control-group:nth-of-type(5){ /* contexts list */
 	width:50%;
 }
-#general .control-group:nth-of-type(7){ /* type */
+#general .control-group:nth-of-type(8){ /* type */
 	float:left; width:50%;
 }
-#general .control-group:nth-of-type(8){ /* Icon value */
+#general .control-group:nth-of-type(9){ /* Icon value */
 	width:50%;
 }
-#general .control-group:nth-of-type(9){ /* Color */
+#general .control-group:nth-of-type(10){ /* Color */
 	clear:both;float:left;width:50%;
 }
-#general .control-group:nth-of-type(10){ /* color picker */
+#general .control-group:nth-of-type(11){ /* color picker */
 	float:right;width:50%;
 }
-#general .control-group:nth-of-type(11){ /* color variable*/
+#general .control-group:nth-of-type(12){ /* color variable*/
 	float:right;width:50%;
 }
-#general .control-group:nth-of-type(12){ /* Font color */
+#general .control-group:nth-of-type(13){ /* Font color */
 	clear:both;float:left;width:50%;
 }
-#general .control-group:nth-of-type(13){ /* font color picker*/
+#general .control-group:nth-of-type(14){ /* font color picker*/
 	float:right;width:50%;
 }
-#general .control-group:nth-of-type(14){ /* font color variable*/
+#general .control-group:nth-of-type(15){ /* font color variable*/
 	float:right;width:50%;
 }
-#general .control-group:nth-of-type(15){ /* font size*/
+#general .control-group:nth-of-type(16){ /* font size*/
 	clear:both;
 }
