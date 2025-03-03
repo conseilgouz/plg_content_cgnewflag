@@ -28,6 +28,14 @@ document.addEventListener('DOMContentLoaded', function() {
 				headers[i].innerHTML = inner.replace('&lt;cgnewflag&gt;',cgnewflag_options.newstr);
 			}
 		}
+		if (!headers.length) {
+			header = document.querySelector('h1'); // suppose only one h1 tag
+			if (cgnewflag_options.posflg == 'before') {
+				header.innerHTML = cgnewflag_options.newstr + header.innerHTML;
+			} else {
+				header.innerHTML += cgnewflag_options.newstr;
+			}
+		}
 		document.title = document.title.replace('<cgnewflag>','');
 	}
 	badges = document.querySelectorAll('.cgnewflag_badge');

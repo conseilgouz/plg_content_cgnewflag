@@ -3,6 +3,19 @@
 		<element>cgnewflag</element>
 		<type>plugin</type>
 		<group>content</group>
+		<version>1.0.7</version>
+        <note>
+            <item>Update : 03/03/2025</item>
+        </note>
+        <fix>
+            <item>Custom CSS field : display 6 rows</item>
+            <item>Title : if not in H2 tag, use H1 tag</item>
+        </fix>
+	</changelog>
+	<changelog>
+		<element>cgnewflag</element>
+		<type>plugin</type>
+		<group>content</group>
 		<version>1.0.6</version>
         <note>
             <item>Update : 03/03/2025</item>
