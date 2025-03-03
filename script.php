@@ -10,6 +10,7 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\Filesystem\Folder;
 use Joomla\CMS\Version;
+use Joomla\Database\DatabaseInterface;
 use Joomla\Filesystem\File;
 
 class plgcontentcgnewflagInstallerScript
@@ -84,14 +85,14 @@ class plgcontentcgnewflagInstallerScript
 			sprintf("%s/language/en-GB/en-GB.plg_content_%s.sys.ini", JPATH_ADMINISTRATOR, $this->extname),
 			sprintf("%s/language/fr-FR/fr-FR.plg_content_%s.ini", JPATH_ADMINISTRATOR, $this->extname),
 			sprintf("%s/language/fr-FR/fr-FR.plg_content_%s.sys.ini", JPATH_ADMINISTRATOR, $this->extname),
-			JPATH_SITE . '/plugins/plg_content_'.$this->extname.'/$cgchangelog.php'
+			JPATH_SITE . '/plugins/plg_content_'.$this->extname.'/cgchangelog.php'
 		];
 		foreach ($obsoleteFiles as $file) {
 			if (@is_file($file)) {
 				File::delete($file);
 			}
 		}
-		$db = Factory::getDbo();
+		$db = Factory::getContainer()->get(DatabaseInterface::class);
         $conditions = array(
             $db->qn('type') . ' = ' . $db->q('plugin'),
             $db->qn('element') . ' = ' . $db->quote($this->extname)
@@ -152,7 +153,7 @@ class plgcontentcgnewflagInstallerScript
 			JPATH_PLUGINS . '/system/' . $this->installerName . '/language',
 			JPATH_PLUGINS . '/system/' . $this->installerName,
 		]);
-		$db = Factory::getDbo();
+		$db = Factory::getContainer()->get(DatabaseInterface::class);
 		$query = $db->getQuery(true)
 			->delete('#__extensions')
 			->where($db->quoteName('element') . ' = ' . $db->quote($this->installerName))
@@ -162,5 +163,17 @@ class plgcontentcgnewflagInstallerScript
 		$db->execute();
 		Factory::getCache()->clean('_system');
 	}
+    public function delete($files = [])
+    {
+        foreach ($files as $file) {
+            if (is_dir($file)) {
+                Folder::delete($file);
+            }
+
+            if (is_file($file)) {
+                File::delete($file);
+            }
+        }
+    }
 	
 }

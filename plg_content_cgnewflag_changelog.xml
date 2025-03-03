@@ -3,6 +3,20 @@
 		<element>cgnewflag</element>
 		<type>plugin</type>
 		<group>content</group>
+		<version>1.0.6</version>
+        <note>
+            <item>Update : 03/02/2025</item>
+        </note>
+        <fix>
+            <item>Install script : missing delete function</item>
+            <item>Install script : Joomla 6 compatibility</item>
+            <item>add missing index.html files in directories</item>
+        </fix>
+	</changelog>
+	<changelog>
+		<element>cgnewflag</element>
+		<type>plugin</type>
+		<group>content</group>
 		<version>1.0.5</version>
         <note>
             <item>Update : 01/02/2025</item>
