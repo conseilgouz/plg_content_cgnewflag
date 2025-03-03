@@ -5,7 +5,7 @@
 		<group>content</group>
 		<version>1.0.6</version>
         <note>
-            <item>Update : 03/02/2025</item>
+            <item>Update : 03/03/2025</item>
         </note>
         <fix>
             <item>Install script : missing delete function</item>
@@ -19,7 +19,7 @@
 		<group>content</group>
 		<version>1.0.5</version>
         <note>
-            <item>Update : 01/02/2025</item>
+            <item>Update : 01/03/2025</item>
         </note>
         <fix>
             <item>Remove cgnewflag from page title</item>
@@ -32,7 +32,7 @@
 		<group>content</group>
 		<version>1.0.4</version>
         <note>
-            <item>Update : 01/02/2025</item>
+            <item>Update : 01/03/2025</item>
         </note>
         <addition>
             <item>Add flag position</item>
@@ -44,7 +44,7 @@
 		<group>content</group>
 		<version>1.0.3</version>
         <note>
-            <item>Update : 01/02/2025</item>
+            <item>Update : 01/03/2025</item>
         </note>
         <change>
             <item>Using onContentBeforeDisplay instead of onContentPrepare event</item>
