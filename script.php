@@ -2,7 +2,7 @@
 /**
 * CG New Flag Plugin  - Joomla 4.x/5x Module 
 * copyright 		: Copyright (C) 2025 ConseilGouz. All rights reserved.
-* license    		: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+* license    		: https://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
 */
 // No direct access to this file
 defined('_JEXEC') or die;
@@ -99,7 +99,7 @@ class plgcontentcgnewflagInstallerScript
         );
         $fields = array($db->qn('enabled') . ' = 1');
 
-        $query = $db->getQuery(true);
+        $query = $db->createQuery();
 		$query->update($db->quoteName('#__extensions'))->set($fields)->where($conditions);
 		$db->setQuery($query);
         try {
@@ -154,7 +154,7 @@ class plgcontentcgnewflagInstallerScript
 			JPATH_PLUGINS . '/system/' . $this->installerName,
 		]);
 		$db = Factory::getContainer()->get(DatabaseInterface::class);
-		$query = $db->getQuery(true)
+		$query = $db->createQuery()
 			->delete('#__extensions')
 			->where($db->quoteName('element') . ' = ' . $db->quote($this->installerName))
 			->where($db->quoteName('folder') . ' = ' . $db->quote('system'))

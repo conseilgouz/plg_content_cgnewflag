@@ -2,8 +2,8 @@
 /**
  * @package		CGNewFlag content plugin
  * @author		ConseilGouz
- * @copyright	Copyright (C) 2024 ConseilGouz. All rights reserved.
- * @license		GNU/GPL v2; see LICENSE.php
+ * @copyright	Copyright (C) 2025 ConseilGouz. All rights reserved.
+ * @license		GNU/GPL v3; see LICENSE.php
  **/
 namespace ConseilGouz\Plugin\Content\CGNewflag\Field;
 
@@ -36,7 +36,7 @@ class VersionField extends FormField
 
 		$db = Factory::getContainer()->get(DatabaseInterface::class);
 
-		$query = $db->getQuery(true);
+		$query = $db->createQuery();
 		$query
 			->select($db->quoteName('manifest_cache'))
 			->from($db->quoteName('#__extensions'))

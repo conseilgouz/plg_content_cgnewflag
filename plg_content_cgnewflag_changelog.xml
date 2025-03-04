@@ -3,6 +3,18 @@
 		<element>cgnewflag</element>
 		<type>plugin</type>
 		<group>content</group>
+		<version>1.1.0</version>
+        <note>
+            <item>Update : 04/03/2025</item>
+        </note>
+        <fix>
+            <item>Joomla 5.3 db : getQuery(true) becomes createQuery()</item>
+        </fix>
+	</changelog>
+	<changelog>
+		<element>cgnewflag</element>
+		<type>plugin</type>
+		<group>content</group>
 		<version>1.0.7</version>
         <note>
             <item>Update : 03/03/2025</item>
