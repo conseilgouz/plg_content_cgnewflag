@@ -99,7 +99,7 @@ class plgcontentcgnewflagInstallerScript
         );
         $fields = array($db->qn('enabled') . ' = 1');
 
-        $query = $db->createQuery();
+        $query = $db->getQuery(true);
 		$query->update($db->quoteName('#__extensions'))->set($fields)->where($conditions);
 		$db->setQuery($query);
         try {
@@ -154,7 +154,7 @@ class plgcontentcgnewflagInstallerScript
 			JPATH_PLUGINS . '/system/' . $this->installerName,
 		]);
 		$db = Factory::getContainer()->get(DatabaseInterface::class);
-		$query = $db->createQuery()
+		$query = $db->getQuery(true)
 			->delete('#__extensions')
 			->where($db->quoteName('element') . ' = ' . $db->quote($this->installerName))
 			->where($db->quoteName('folder') . ' = ' . $db->quote('system'))

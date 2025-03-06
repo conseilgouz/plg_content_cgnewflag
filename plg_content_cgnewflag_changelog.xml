@@ -3,6 +3,18 @@
 		<element>cgnewflag</element>
 		<type>plugin</type>
 		<group>content</group>
+		<version>1.1.1</version>
+        <note>
+            <item>Update : 05/03/2025</item>
+        </note>
+        <fix>
+            <item>Reverse Joomla 5.3 db : createQuery() back to getQuery(true)</item>
+        </fix>
+	</changelog>
+	<changelog>
+		<element>cgnewflag</element>
+		<type>plugin</type>
+		<group>content</group>
 		<version>1.1.0</version>
         <note>
             <item>Update : 04/03/2025</item>
