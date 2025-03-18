@@ -3,6 +3,19 @@
 		<element>cgnewflag</element>
 		<type>plugin</type>
 		<group>content</group>
+		<version>1.1.3</version>
+        <note>
+            <item>Update : 18/03/2025</item>
+        </note>
+        <fix>
+            <item>Allow com_tags context</item>
+            <item>Enable in articles list</item>
+        </fix>
+	</changelog>
+	<changelog>
+		<element>cgnewflag</element>
+		<type>plugin</type>
+		<group>content</group>
 		<version>1.1.2</version>
         <note>
             <item>Update : 15/03/2025</item>

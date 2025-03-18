@@ -28,12 +28,26 @@ document.addEventListener('DOMContentLoaded', function() {
 				headers[i].innerHTML = inner.replace('&lt;cgnewflag&gt;',cgnewflag_options.newstr);
 			}
 		}
+		if (!headers.length) { // no H2, check .list-title (tags view)
+			headers = document.querySelectorAll('.list-title');
+			for (var i=0; i< headers.length;i++) {
+				inner = headers[i].innerHTML;
+				if (inner.indexOf('<cgnewflag>') >= 0) {
+					headers[i].innerHTML = inner.replace('<cgnewflag>',cgnewflag_options.newstr);
+				}
+				if (inner.indexOf('&lt;cgnewflag&gt;') >= 0) {
+					headers[i].innerHTML = inner.replace('&lt;cgnewflag&gt;',cgnewflag_options.newstr);
+				}
+			}
+		}			
 		if (!headers.length) {
 			header = document.querySelector('h1'); // suppose only one h1 tag
-			if (cgnewflag_options.posflg == 'before') {
-				header.innerHTML = cgnewflag_options.newstr + header.innerHTML;
-			} else {
-				header.innerHTML += cgnewflag_options.newstr;
+			if (header) {
+				if (cgnewflag_options.posflg == 'before') {
+					header.innerHTML = cgnewflag_options.newstr + header.innerHTML;
+				} else {
+					header.innerHTML += cgnewflag_options.newstr;
+				}
 			}
 		}
 		document.title = document.title.replace('<cgnewflag>','');

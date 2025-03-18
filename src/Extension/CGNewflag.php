@@ -5,6 +5,7 @@
  * @copyright	Copyright (C) 2025 ConseilGouz. All rights reserved.
  * @license		GNU/GPL v2; see LICENSE.php
  **/
+
 namespace ConseilGouz\Plugin\Content\CGNewflag\Extension;
 
 defined('_JEXEC') or die('Restricted access');
@@ -38,8 +39,19 @@ final class CGNewflag extends CMSPlugin implements SubscriberInterface
         $input               = Factory::getApplication()->input;
         $this->view          = $input->getCmd('view');
         $this->article_id    = $event->getItem()->id;
-        $this->article_title = $event->getItem()->title;
-        $date = $this->params->get('datefield', 'publish_up');
+        $field = "";
+        if ($context == 'com_tags.tag') {
+            // tags : add core_ to key
+            $field = "core_";
+        }
+        $title = $field.'title';
+        $this->article_title = $event->getItem()->$title;
+        $date = $field.$this->params->get('datefield', 'publish_up');
+
+        if ($date == 'core_modified') { // tags
+            $date .= '_time';
+        }
+
         if (isset($event->getItem()->$date)) {
             $nbday = $this->params->get('length', 10);
             $tmp = date('Y-m-d H:i:s', mktime(date("H"), date("i"), 0, date("m"), date("d") - intval($nbday), date("Y")));
@@ -76,9 +88,9 @@ final class CGNewflag extends CMSPlugin implements SubscriberInterface
                 if ($this->params->get('posflg', 'before') == 'header') {
                     $event->addResult($new);
                 } elseif ($this->params->get('posflg', 'before') == 'after') { // done in js
-                    $event->getItem()->title .= '<cgnewflag>';
+                    $event->getItem()->$title .= '<cgnewflag>';
                 } elseif ($this->params->get('posflg', 'before') == 'before') { // done in js
-                    $event->getItem()->title = '<cgnewflag>'.$event->getItem()->title;
+                    $event->getItem()->$title = '<cgnewflag>'.$event->getItem()->$title;
                 }
             }
         }
