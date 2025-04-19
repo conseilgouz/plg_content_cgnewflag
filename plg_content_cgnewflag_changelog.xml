@@ -3,6 +3,18 @@
 		<element>cgnewflag</element>
 		<type>plugin</type>
 		<group>content</group>
+		<version>1.2.2</version>
+        <note>
+            <item>Update : 19/04/2025</item>
+        </note>
+        <change>
+            <item>Changing update file to cg_updates.xml</item>
+        </change>
+	</changelog>
+	<changelog>
+		<element>cgnewflag</element>
+		<type>plugin</type>
+		<group>content</group>
 		<version>1.2.1</version>
         <note>
             <item>Update : 19/04/2025</item>
