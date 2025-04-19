@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension group="content" method="upgrade" type="plugin" version="4">
 	<name>PLG_CONTENT_CGNEWFLAG</name>
-	<creationDate>2025-03-18</creationDate>
+	<creationDate>2025-04-19</creationDate>
 	<author>ConseilGouz</author>
 	<authorEmail>pascal.leconte@conseilgouz.com</authorEmail>
 	<authorUrl>www.conseilgouz.com</authorUrl>
 	<copyright>Copyright (C) 2025 ConseilGouz. All rights reserved.</copyright>
 	<license>GNU/GPL</license>
-	<version>1.1.4</version>
+	<version>1.2.0</version>
 	<description>PLG_CONTENT_CGNEWFLAG_DESC</description>
 	<namespace path="src">ConseilGouz\Plugin\Content\CGNewflag</namespace>
 	<scriptfile>script.php</scriptfile>
@@ -40,6 +40,9 @@
 				<option value="after">PLG_CONTENT_CGNEWFLAG_POSFLAG_AFTER</option> 
 				<option value="header">PLG_CONTENT_CGNEWFLAG_POSFLAG_HEADER</option> 
 			</field>
+			<field name="tag" type="text" showon="posflg:before,after"
+                label="PLG_CONTENT_CGNEWFLAG_TAG_LBL" description="PLG_CONTENT_CGNEWFLAG_TAG_DESC" default="&lt;cgnewflag&gt;" 
+                />
 			<field name="contexts" type="textarea" label="PLG_CONTENT_CGNEWFLAG_CONTEXTS" description="PLG_CONTENT_CGNEWFLAG_CONTEXTS_DESC" 
 			default="com_content.article,com_content.category,com_content.featured"/>
 			<field name="datefield"
@@ -59,8 +62,10 @@
                 <option value="badge">PLG_CONTENT_CGNEWFLAG_BADGE</option>
                 <option value="icon">PLG_CONTENT_CGNEWFLAG_ICON</option>
 			</field>
+			<field name="badge-text" type="text" showon="type:badge"
+                label="PLG_CONTENT_CGNEWFLAG_TEXT" description="PLG_CONTENT_CGNEWFLAG_TEXT_DESC" default="PLG_CONTENT_CGNEWFLAG_NEW"/>
 			<field name="icon" type="text" showon="type:icon"
-                label="PLG_CONTENT_CGNEWFLAG_ICON_LBL" description="PLG_CONTENT_CGNEWFLAG_ICON_DESC" default="" 
+                label="PLG_CONTENT_CGNEWFLAG_ICON_LBL" description="PLG_CONTENT_CGNEWFLAG_ICON_DESC" default="fa-star"   
 				validate="fontawesome"
                 />
 			<field name="bg-type" type="radio" class="btn-group"  
@@ -86,7 +91,7 @@
                 label="PLG_CONTENT_CGNEWFLAG_FONT_VAR" description="PLG_CONTENT_CGNEWFLAG_FONT_VAR_DESC" default="" 
                 validate="variable"/>
 			<field name="font-size" type="cgrange" default="1" class="limits buttons"
-				min="0.1" max="10" step="0.1"	unit='em'		
+				min="0.1" max="5" step="0.1"	unit='em'		
 				label="PLG_CONTENT_CGNEWFLAG_FONTSIZE" description="PLG_CONTENT_CGNEWFLAG_FONTSIZE_DESC" 
 			/>
 			<field name="css" type="textarea" label="PLG_CONTENT_CGNEWFLAG_CSS" description="PLG_CONTENT_CGNEWFLAG_CSS_DESC" 

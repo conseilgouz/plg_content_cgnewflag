@@ -56,6 +56,7 @@ final class CGNewflag extends CMSPlugin implements SubscriberInterface
             $nbday = $this->params->get('length', 10);
             $tmp = date('Y-m-d H:i:s', mktime(date("H"), date("i"), 0, date("m"), date("d") - intval($nbday), date("Y")));
             if ($this->params->get('type', 'badge') == 'badge') {
+                $this->params->get('badge-text', Text::_('PLG_CONTENT_CGNEWFLAG_NEW'));
                 $new = ($tmp < $event->getItem()->$date) ? '<span class="cgnewflag_badge">'.Text::_('PLG_CONTENT_CGNEWFLAG_NEW').'</span>' : '';
             } else {
                 $new = ($tmp < $event->getItem()->$date) ? '<i class="cgnewflag_icon fa-solid '.$this->params->get('icon', 'fa-star').'" title="'.Text::_('PLG_CONTENT_CGNEWFLAG_NEW').'"></i>' : '';
@@ -80,17 +81,19 @@ final class CGNewflag extends CMSPlugin implements SubscriberInterface
                 $bg = $this->params->get('bg-type', 'pick') == 'pick' ? $this->params->get('bg-color', '#dc3545') : $this->params->get('bg-var', '--bg-alert')  ;
                 $font =  $this->params->get('font-type', 'pick') == 'pick' ? $this->params->get('font-color', '#fff') : $this->params->get('font-var', '--bg-white')  ;
                 $fontsize = $this->params->get('font-size', '1');
+                $tag = $this->params->get('tag', 'cgnewflag');
                 $document->addScriptOptions(
                     'plg_content_cgnewflag',
                     array(  'bg' => $bg, 'font' => $font,'fontsize' => $fontsize,
-                            'newstr' => $new,'posflg' => $this->params->get('posflg', 'before'))
+                            'newstr' => $new,'posflg' => $this->params->get('posflg', 'before'),
+                            'tag' => $tag)
                 );
                 if ($this->params->get('posflg', 'before') == 'header') {
                     $event->addResult($new);
                 } elseif ($this->params->get('posflg', 'before') == 'after') { // done in js
-                    $event->getItem()->$title .= '<cgnewflag>';
+                    $event->getItem()->$title .= '<'.$tag.'>';
                 } elseif ($this->params->get('posflg', 'before') == 'before') { // done in js
-                    $event->getItem()->$title = '<cgnewflag>'.$event->getItem()->$title;
+                    $event->getItem()->$title = '<'.$tag.'>'.$event->getItem()->$title;
                 }
             }
         }

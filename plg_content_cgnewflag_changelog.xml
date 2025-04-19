@@ -3,6 +3,19 @@
 		<element>cgnewflag</element>
 		<type>plugin</type>
 		<group>content</group>
+		<version>1.2.0</version>
+        <note>
+            <item>Update : 19/04/2025</item>
+        </note>
+        <addition>
+            <item>New parameter : tag</item>
+            <item>New parameter : Badge text</item>
+        </addition>
+	</changelog>
+	<changelog>
+		<element>cgnewflag</element>
+		<type>plugin</type>
+		<group>content</group>
 		<version>1.1.4</version>
         <note>
             <item>Update : 18/03/2025</item>

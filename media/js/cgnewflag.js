@@ -21,22 +21,22 @@ document.addEventListener('DOMContentLoaded', function() {
 		headers = document.querySelectorAll('h2');
 		for (var i=0; i< headers.length;i++) {
 			inner = headers[i].innerHTML;
-			if (inner.indexOf('<cgnewflag>') >= 0) {
-				headers[i].innerHTML = inner.replace('<cgnewflag>',cgnewflag_options.newstr);
+			if (inner.indexOf('<'+cgnewflag_options.tag+'>') >= 0) {
+				headers[i].innerHTML = inner.replace('<'+cgnewflag_options.tag+'>',cgnewflag_options.newstr);
 			}
-			if (inner.indexOf('&lt;cgnewflag&gt;') >= 0) {
-				headers[i].innerHTML = inner.replace('&lt;cgnewflag&gt;',cgnewflag_options.newstr);
+			if (inner.indexOf('&lt;'+cgnewflag_options.tag+'&gt;') >= 0) {
+				headers[i].innerHTML = inner.replace('&lt;'+cgnewflag_options.tag+'&gt;',cgnewflag_options.newstr);
 			}
 		}
 		if (!headers.length) { // no H2, check .list-title (tags view)
 			headers = document.querySelectorAll('.list-title');
 			for (var i=0; i< headers.length;i++) {
 				inner = headers[i].innerHTML;
-				if (inner.indexOf('<cgnewflag>') >= 0) {
-					headers[i].innerHTML = inner.replace('<cgnewflag>',cgnewflag_options.newstr);
+				if (inner.indexOf('<'+cgnewflag_options.tag+'>') >= 0) {
+					headers[i].innerHTML = inner.replace('<'+cgnewflag_options.tag+'>',cgnewflag_options.newstr);
 				}
-				if (inner.indexOf('&lt;cgnewflag&gt;') >= 0) {
-					headers[i].innerHTML = inner.replace('&lt;cgnewflag&gt;',cgnewflag_options.newstr);
+				if (inner.indexOf('&lt;'+cgnewflag_options.tag+'&gt;') >= 0) {
+					headers[i].innerHTML = inner.replace('&lt;'+cgnewflag_options.tag+'&gt;',cgnewflag_options.newstr);
 				}
 			}
 		}			
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				}
 			}
 		}
-		document.title = document.title.replace('<cgnewflag>','');
+		document.title = document.title.replace('<'+cgnewflag_options.tag+'>','');
 	}
 	badges = document.querySelectorAll('.cgnewflag_badge');
 	for (var i=0; i< badges.length;i++) {

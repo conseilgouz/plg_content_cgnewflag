@@ -6,33 +6,45 @@
  * 
  *						>>>	CSS for Admin display module  <<<
  */
-#general .control-group:nth-of-type(5){ /* contexts list */
-	width:50%;
-}
-#general .control-group:nth-of-type(8){ /* type */
-	float:left; width:50%;
-}
-#general .control-group:nth-of-type(9){ /* Icon value */
-	width:50%;
-}
-#general .control-group:nth-of-type(10){ /* Color */
-	clear:both;float:left;width:50%;
-}
-#general .control-group:nth-of-type(11){ /* color picker */
-	float:right;width:50%;
-}
-#general .control-group:nth-of-type(12){ /* color variable*/
-	float:right;width:50%;
-}
-#general .control-group:nth-of-type(13){ /* Font color */
-	clear:both;float:left;width:50%;
-}
-#general .control-group:nth-of-type(14){ /* font color picker*/
-	float:right;width:50%;
-}
-#general .control-group:nth-of-type(15){ /* font color variable*/
-	float:right;width:50%;
-}
-#general .control-group:nth-of-type(16){ /* font size*/
-	clear:both;
+ 
+#general .col-lg-9 {
+    .control-group:nth-of-type(4){ /* position */
+        float:left;width:50%;
+    }
+    .control-group:nth-of-type(5){ /* tag */
+        float:right;width:50%;
+    }
+    .control-group:nth-of-type(6){ /* contexts list */
+        clear:both;width:50%;
+    }
+    .control-group:nth-of-type(9){ /* type */
+        float:left; width:50%;
+    }
+    .control-group:nth-of-type(10){ /* Badge text */
+        float:right;width:50%;
+    }
+    .control-group:nth-of-type(11){ /* Icon value */
+        width:50%;
+    }
+    .control-group:nth-of-type(12){ /* Color */
+        clear:both;float:left;width:50%;
+    }
+    .control-group:nth-of-type(13){ /* color picker */
+        float:right;width:50%;
+    }
+    .control-group:nth-of-type(14){ /* color variable*/
+        float:right;width:50%;
+    }
+    .control-group:nth-of-type(15){ /* Font color */
+        clear:both;float:left;width:50%;
+    }
+    .control-group:nth-of-type(16){ /* font color picker*/
+        float:right;width:50%;
+    }
+    .control-group:nth-of-type(17){ /* font color variable*/
+        float:right;width:50%;
+    }
+    .control-group:nth-of-type(18){ /* font size*/
+        clear:both;
+    }
 }
