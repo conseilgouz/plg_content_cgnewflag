@@ -108,10 +108,10 @@ class plgcontentcgnewflagInstallerScript
         catch (RuntimeException $e) {
             JLog::add('unable to enable '.$this->name, JLog::ERROR, 'jerror');
         }
-		// remove obsolete update site
+		// back to standard update site
 		$query = $db->getQuery(true)
 			->delete('#__update_sites')
-			->where($db->quoteName('location') . ' like "%plg_content_cgnewflag_update%"');
+			->where($db->quoteName('location') . ' like "%/cg_update.xml%"');
 		$db->setQuery($query);
 		$db->execute();
         // remove very old ones
