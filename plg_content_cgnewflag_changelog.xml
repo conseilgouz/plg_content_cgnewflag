@@ -3,10 +3,13 @@
 		<element>cgnewflag</element>
 		<type>plugin</type>
 		<group>content</group>
-		<version>1.2.0</version>
+		<version>1.2.1</version>
         <note>
             <item>Update : 19/04/2025</item>
         </note>
+        <fix>
+            <item>packaging error</item>
+        </fix>
         <addition>
             <item>New parameter : tag</item>
             <item>New parameter : Badge text</item>
