@@ -7,44 +7,49 @@
  *						>>>	CSS for Admin display module  <<<
  */
  
-#general .col-lg-9 {
-    .control-group:nth-of-type(4){ /* position */
+#general .col-lg-9  .subform-repeatable-group {
+    .control-group:nth-of-type(3){ /* position */
         float:left;width:50%;
     }
-    .control-group:nth-of-type(5){ /* tag */
+    .control-group:nth-of-type(4){ /* tag */
         float:right;width:50%;
     }
-    .control-group:nth-of-type(6){ /* contexts list */
-        clear:both;width:50%;
+    .control-group:nth-of-type(4) .control-label{ /* tag */
+        width:120px;
+        margin-right:2em;
+        text-align:right;
     }
-    .control-group:nth-of-type(9){ /* type */
-        float:left; width:50%;
+    .control-group:nth-of-type(5){ /* contexts list */
+        clear:both;width:100%;
     }
-    .control-group:nth-of-type(10){ /* Badge text */
+    .control-group:nth-of-type(7){ /* badge/icone */
+        float:left;width:50%;
+    }
+    .control-group:nth-of-type(8){ /* Badge text */
         float:right;width:50%;
     }
-    .control-group:nth-of-type(11){ /* Icon value */
-        width:50%;
+    .control-group:nth-of-type(9){ /* icone text */
+        float:right;width:50%;
     }
-    .control-group:nth-of-type(12){ /* Color */
+    .control-group:nth-of-type(10){ /* color type */
+        width:50%;float:left;
+    }
+    .control-group:nth-of-type(11){ /* Color picker*/
+        float:right;width:50%;
+    }
+    .control-group:nth-of-type(12){ /* color variable*/
+        float:right;width:50%;
+    }
+    .control-group:nth-of-type(13){ /* Font color */
         clear:both;float:left;width:50%;
     }
-    .control-group:nth-of-type(13){ /* color picker */
+    .control-group:nth-of-type(14){ /* font color picker*/
         float:right;width:50%;
     }
-    .control-group:nth-of-type(14){ /* color variable*/
+    .control-group:nth-of-type(15){ /* font color variable*/
         float:right;width:50%;
     }
-    .control-group:nth-of-type(15){ /* Font color */
-        clear:both;float:left;width:50%;
-    }
-    .control-group:nth-of-type(16){ /* font color picker*/
-        float:right;width:50%;
-    }
-    .control-group:nth-of-type(17){ /* font color variable*/
-        float:right;width:50%;
-    }
-    .control-group:nth-of-type(18){ /* font size*/
+    .control-group:nth-of-type(16){ /* font size*/
         clear:both;
     }
 }

@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension group="content" method="upgrade" type="plugin" version="4">
 	<name>PLG_CONTENT_CGNEWFLAG</name>
-	<creationDate>2025-04-19</creationDate>
+	<creationDate>2025-07-29</creationDate>
 	<author>ConseilGouz</author>
 	<authorEmail>pascal.leconte@conseilgouz.com</authorEmail>
 	<authorUrl>www.conseilgouz.com</authorUrl>
 	<copyright>Copyright (C) 2025 ConseilGouz. All rights reserved.</copyright>
 	<license>GNU/GPL</license>
-	<version>1.2.3</version>
+	<version>1.3.0</version>
 	<description>PLG_CONTENT_CGNEWFLAG_DESC</description>
 	<namespace path="src">ConseilGouz\Plugin\Content\CGNewflag</namespace>
 	<scriptfile>script.php</scriptfile>
 	<files>
 		<folder plugin="cgnewflag">services</folder>
+		<file>cgsubform.xml</file>	
 		<folder>src</folder>	
         <folder>layouts</folder>
 	</files>
@@ -29,71 +30,10 @@
 	</media>
 	<config>
 	<fields name="params">
-		<fieldset name="basic" 
-			addfieldprefix="ConseilGouz\Plugin\Content\CGNewflag\Field"
-			addruleprefix="ConseilGouz\Plugin\Content\CGNewflag\Rule">
+		<fieldset name="basic" addfieldprefix="ConseilGouz\Plugin\Content\CGNewflag\Field">
 			<field name="version" type="version" extension="cgnewflag" margintop="-3em"/>
-			<field name="posflg"
-				type="radio" class="btn-group" default="before"
-				label="PLG_CONTENT_CGNEWFLAG_POSFLAG" description="PLG_CONTENT_CGNEWFLAG_POSFLAG_DESC">
-				<option value="before">PLG_CONTENT_CGNEWFLAG_POSFLAG_BEFORE</option> 
-				<option value="after">PLG_CONTENT_CGNEWFLAG_POSFLAG_AFTER</option> 
-				<option value="header">PLG_CONTENT_CGNEWFLAG_POSFLAG_HEADER</option> 
-			</field>
-			<field name="tag" type="text" showon="posflg:before,after"
-                label="PLG_CONTENT_CGNEWFLAG_TAG" description="PLG_CONTENT_CGNEWFLAG_TAG_DESC" default="cgnewflag" 
-                />
-			<field name="contexts" type="textarea" label="PLG_CONTENT_CGNEWFLAG_CONTEXTS" description="PLG_CONTENT_CGNEWFLAG_CONTEXTS_DESC" 
-			default="com_content.article,com_content.category,com_content.featured"/>
-			<field name="datefield"
-				type="radio" class="btn-group" default="publish_up"
-				label="PLG_CONTENT_CGNEWFLAG_DATE" description="PLG_CONTENT_CGNEWFLAG_DATE_DESC">
-				<option value="publish_up">PLG_CONTENT_CGNEWFLAG_DATE_PUB</option> 
-				<option value="created">PLG_CONTENT_CGNEWFLAG_DATE_CRE</option> 
-				<option value="modified">PLG_CONTENT_CGNEWFLAG_DATE_MOD</option> 
-			</field>
-			<field name="length" type="cgrange" default="30" class="limits buttons"
-				min="1" max="365" step="1"	unit='d'		
-				label="PLG_CONTENT_CGNEWFLAG_LENGTH" description="PLG_CONTENT_CGNEWFLAG_LENGTH_DESC" 
-			/>
-			<field name="type" type="radio" class="btn-group"  
-				label="PLG_CONTENT_CGNEWFLAG_TYPE" description="PLG_CONTENT_CGNEWFLAG_TYPE_DESC" 
-				default="badge">
-                <option value="badge">PLG_CONTENT_CGNEWFLAG_BADGE</option>
-                <option value="icon">PLG_CONTENT_CGNEWFLAG_ICON</option>
-			</field>
-			<field name="badge-text" type="text" showon="type:badge"
-                label="PLG_CONTENT_CGNEWFLAG_TEXT" description="PLG_CONTENT_CGNEWFLAG_TEXT_DESC" default="PLG_CONTENT_CGNEWFLAG_NEW"/>
-			<field name="icon" type="text" showon="type:icon"
-                label="PLG_CONTENT_CGNEWFLAG_ICON_LBL" description="PLG_CONTENT_CGNEWFLAG_ICON_DESC" default="fa-star"   
-				validate="fontawesome"
-                />
-			<field name="bg-type" type="radio" class="btn-group"  
-				label="PLG_CONTENT_CGNEWFLAG_BG_TYPE" description="PLG_CONTENT_CGNEWFLAG_BG_TYPE_DESC" 
-				default="pick">
-                <option value="pick">PLG_CONTENT_CGNEWFLAG_PICK</option>
-                <option value="var">PLG_CONTENT_CGNEWFLAG_VAR</option>
-			</field>
-			<field name="bg-color" type="color" showon="bg-type:pick"
-                label="PLG_CONTENT_CGNEWFLAG_BG_COLOR" description="PLG_CONTENT_CGNEWFLAG_BG_COLOR_DESC" default="#dc3545"/>
-			<field name="bg-var" type="text" showon="bg-type:var"
-                label="PLG_CONTENT_CGNEWFLAG_BG_VAR" description="PLG_CONTENT_CGNEWFLAG_BG_VAR_DESC" default="" 
-                validate="variable"/>
-			<field name="font-type" type="radio" class="btn-group" showon="type:badge"  
-				label="PLG_CONTENT_CGNEWFLAG_FONT_TYPE" description="PLG_CONTENT_CGNEWFLAG_FONT_TYPE_DESC" 
-				default="pick">
-                <option value="pick">PLG_CONTENT_CGNEWFLAG_PICK</option>
-                <option value="var">PLG_CONTENT_CGNEWFLAG_VAR</option>
-			</field>
-			<field name="font-color" type="color" showon="type:badge[AND]font-type:pick"
-                label="PLG_CONTENT_CGNEWFLAG_FONT_COLOR" description="PLG_CONTENT_CGNEWFLAG_FONT_COLOR_DESC" default="#fff"/>
-			<field name="font-var" type="text" showon="type:badge[AND]font-type:var"
-                label="PLG_CONTENT_CGNEWFLAG_FONT_VAR" description="PLG_CONTENT_CGNEWFLAG_FONT_VAR_DESC" default="" 
-                validate="variable"/>
-			<field name="font-size" type="cgrange" default="1" class="limits buttons"
-				min="0.1" max="5" step="0.1"	unit='em'		
-				label="PLG_CONTENT_CGNEWFLAG_FONTSIZE" description="PLG_CONTENT_CGNEWFLAG_FONTSIZE_DESC" 
-			/>
+            <field name="options" type="subform" formsource="/plugins/content/cgnewflag/cgsubform.xml" multiple="true" label="PLG_CONTENT_CGNEWFLAG_DETAIL">
+            </field>
 			<field name="css" type="textarea" label="PLG_CONTENT_CGNEWFLAG_CSS" description="PLG_CONTENT_CGNEWFLAG_CSS_DESC" 
 			default="" rows="6" /> 
 		</fieldset>

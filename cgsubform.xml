@@ -1,0 +1,70 @@
+<form>
+	<config>         
+		<inlinehelp button="show"/>     
+	</config>
+    <fieldset name="option" label="une option"  
+			addfieldprefix="ConseilGouz\Plugin\Content\CGNewflag\Field"
+			addruleprefix="ConseilGouz\Plugin\Content\CGNewflag\Rule">
+		<field name="datefield"
+			type="radio" class="btn-group" default="publish_up"
+			label="PLG_CONTENT_CGNEWFLAG_DATE" description="PLG_CONTENT_CGNEWFLAG_DATE_DESC">
+                <option value="publish_up">PLG_CONTENT_CGNEWFLAG_DATE_PUB</option> 
+			<option value="created">PLG_CONTENT_CGNEWFLAG_DATE_CRE</option> 
+			<option value="modified">PLG_CONTENT_CGNEWFLAG_DATE_MOD</option> 
+		</field>
+		<field name="posflg"
+			type="radio" class="btn-group" default="before"
+			label="PLG_CONTENT_CGNEWFLAG_POSFLAG" description="PLG_CONTENT_CGNEWFLAG_POSFLAG_DESC">
+			<option value="before">PLG_CONTENT_CGNEWFLAG_POSFLAG_BEFORE</option> 
+			<option value="after">PLG_CONTENT_CGNEWFLAG_POSFLAG_AFTER</option> 
+			<option value="header">PLG_CONTENT_CGNEWFLAG_POSFLAG_HEADER</option> 
+		</field>
+		<field name="tag" type="text" showon="posflg:before,after"
+            label="PLG_CONTENT_CGNEWFLAG_TAG" description="PLG_CONTENT_CGNEWFLAG_TAG_DESC" default="cgnewflag" 
+            />
+		<field name="contexts" type="textarea" label="PLG_CONTENT_CGNEWFLAG_CONTEXTS" description="PLG_CONTENT_CGNEWFLAG_CONTEXTS_DESC" 
+            default="com_content.article,com_content.category,com_content.featured"/>
+		<field name="length" type="cgrange" default="30" class="limits buttons"
+			min="1" max="365" step="1"	unit='d'		
+			label="PLG_CONTENT_CGNEWFLAG_LENGTH" description="PLG_CONTENT_CGNEWFLAG_LENGTH_DESC" 
+		/>
+		<field name="type" type="radio" class="btn-group"  
+			label="PLG_CONTENT_CGNEWFLAG_TYPE" description="PLG_CONTENT_CGNEWFLAG_TYPE_DESC" 
+			default="badge">
+            <option value="badge">PLG_CONTENT_CGNEWFLAG_BADGE</option>
+            <option value="icon">PLG_CONTENT_CGNEWFLAG_ICON</option>
+		</field>
+		<field name="badgetext" type="text" showon="type:badge"
+            label="PLG_CONTENT_CGNEWFLAG_TEXT" description="PLG_CONTENT_CGNEWFLAG_TEXT_DESC" default="PLG_CONTENT_CGNEWFLAG_NEW"/>
+		<field name="icon" type="text" showon="type:icon"
+            label="PLG_CONTENT_CGNEWFLAG_ICON_LBL" description="PLG_CONTENT_CGNEWFLAG_ICON_DESC" default="fa-star"   
+            validate="fontawesome"
+        />
+		<field name="bgtype" type="radio" class="btn-group"  
+			label="PLG_CONTENT_CGNEWFLAG_BG_TYPE" description="PLG_CONTENT_CGNEWFLAG_BG_TYPE_DESC" 
+			default="pick">
+            <option value="pick">PLG_CONTENT_CGNEWFLAG_PICK</option>
+            <option value="var">PLG_CONTENT_CGNEWFLAG_VAR</option>
+		</field>
+		<field name="bgcolor" type="color" showon="bgtype:pick"
+            label="PLG_CONTENT_CGNEWFLAG_BG_COLOR" description="PLG_CONTENT_CGNEWFLAG_BG_COLOR_DESC" default="#dc3545"/>
+		<field name="bgvar" type="text" showon="bgtype:var"
+            label="PLG_CONTENT_CGNEWFLAG_BG_VAR" description="PLG_CONTENT_CGNEWFLAG_BG_VAR_DESC" default="" 
+            validate="variable"/>
+		<field name="fonttype" type="radio" class="btn-group" showon="type:badge"  
+			label="PLG_CONTENT_CGNEWFLAG_FONT_TYPE" description="PLG_CONTENT_CGNEWFLAG_FONT_TYPE_DESC" 
+			default="pick">
+            <option value="pick">PLG_CONTENT_CGNEWFLAG_PICK</option>
+            <option value="var">PLG_CONTENT_CGNEWFLAG_VAR</option>
+		</field>
+		<field name="fontcolor" type="color" showon="type:badge[AND]fonttype:pick"
+            label="PLG_CONTENT_CGNEWFLAG_FONT_COLOR" description="PLG_CONTENT_CGNEWFLAG_FONT_COLOR_DESC" default="#fff"/>
+		<field name="fontvar" type="text" showon="type:badge[AND]fonttype:var"
+            label="PLG_CONTENT_CGNEWFLAG_FONT_VAR" description="PLG_CONTENT_CGNEWFLAG_FONT_VAR_DESC" default="" 
+            validate="variable"/>
+		<field name="fontsize" type="cgrange" default="1" class="limits buttons"
+			min="0.1" max="5" step="0.1"	unit='em'		
+			label="PLG_CONTENT_CGNEWFLAG_FONTSIZE" description="PLG_CONTENT_CGNEWFLAG_FONTSIZE_DESC" 
+		/>
+    </fieldset>
+</form>

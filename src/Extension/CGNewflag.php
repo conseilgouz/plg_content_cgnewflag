@@ -32,9 +32,17 @@ final class CGNewflag extends CMSPlugin implements SubscriberInterface
     public function onBefore($event)
     {
         $context = $event->getContext();
-        $contexts = explode(',', $this->params->get('contexts', 'com_content.article,com_content.category'));
-        if (!in_array($context, $contexts)) {
-            return true;
+        $options = $this->params->get('options');
+        $found = false;
+        foreach ($options as $option) {
+            $contexts = explode(',', $option->contexts);
+            if (in_array($context, $contexts)) {
+                $found = true;
+                break;
+            }
+        }
+        if (!$found) { // invalid context
+            return;
         }
         $input               = Factory::getApplication()->input;
         $this->view          = $input->getCmd('view');
@@ -45,57 +53,76 @@ final class CGNewflag extends CMSPlugin implements SubscriberInterface
             $field = "core_";
         }
         $title = $field.'title';
-        $this->article_title = $event->getItem()->$title;
-        $date = $field.$this->params->get('datefield', 'publish_up');
-
-        if ($date == 'core_modified') { // tags
-            $date .= '_time';
-        }
-
-        if (isset($event->getItem()->$date)) {
-            $nbday = $this->params->get('length', 10);
-            $tmp = date('Y-m-d H:i:s', mktime(date("H"), date("i"), 0, date("m"), date("d") - intval($nbday), date("Y")));
-            if ($this->params->get('type', 'badge') == 'badge') {
-                $this->params->get('badge-text', Text::_('PLG_CONTENT_CGNEWFLAG_NEW'));
-                $new = ($tmp < $event->getItem()->$date) ? '<span class="cgnewflag_badge">'.Text::_('PLG_CONTENT_CGNEWFLAG_NEW').'</span>' : '';
-            } else {
-                $new = ($tmp < $event->getItem()->$date) ? '<i class="cgnewflag_icon fa-solid '.$this->params->get('icon', 'fa-star').'" title="'.Text::_('PLG_CONTENT_CGNEWFLAG_NEW').'"></i>' : '';
+        foreach ($options as $option) {
+            $this->article_title = $event->getItem()->$title;
+            $date = $field.$option->datefield;
+            if ($date == 'core_modified') { // tags
+                $date .= '_time';
             }
-            if ($new) {
-                $app = Factory::getApplication();
-                $plg	= 'media/plg_content_cgnewflag/';
-                $document = $app->getDocument();
-                $wa = $document->getWebAssetManager();
-                $wa->registerAndUseStyle('cgnewflag', $plg.'/css/cgnewflag.css');
-                if ($css = $this->params->get('css', '')) {
-                    $customCSS = <<< CSS
-					$css
-					CSS;
-                    $wa->addInlineStyle($customCSS, ['name' => 'cgnewflag.asset']);
-                }
-                if ((bool)$app->getConfig()->get('debug')) { // Mode debug
-                    $document->addScript(''.URI::base(true).'/'.$plg.'/js/cgnewflag.js');
+            $bg = $option->bgtype == 'pick' ? $option->bgcolor : 'var('.$option->bgvar.')';
+            $font =  $option->fonttype == 'pick' ? $option->fontcolor : 'var('.$option->fontvar.')'  ;
+            $fontsize = $option->fontsize;
+            if (isset($event->getItem()->$date)) {
+                $nbday = $option->length;
+                $tmp = date('Y-m-d H:i:s', mktime(date("H"), date("i"), 0, date("m"), date("d") - intval($nbday), date("Y")));
+                if ($option->type == 'badge') {
+                    $style = "style='background-color:".$bg.";color:".$font.";font-size:".$fontsize."em;'";
+                    $new = ($tmp < $event->getItem()->$date) ? '<span class="cgnewflag_badge" '.$style.'>'.Text::_($option->badgetext).'</span>' : '';
                 } else {
-                    $wa->registerAndUseScript('cgnewflag', $plg.'/js/cgnewflag.js');
+                    $style = "style='color:".$bg.";font-size:".$fontsize."em;'";
+                    $new = ($tmp < $event->getItem()->$date) ? '<i class="cgnewflag_icon fa-solid '.$option->icon.'" '.$style.' title="'.Text::_($option->badgetext).'"></i>' : '';
                 }
-                $bg = $this->params->get('bg-type', 'pick') == 'pick' ? $this->params->get('bg-color', '#dc3545') : $this->params->get('bg-var', '--bg-alert')  ;
-                $font =  $this->params->get('font-type', 'pick') == 'pick' ? $this->params->get('font-color', '#fff') : $this->params->get('font-var', '--bg-white')  ;
-                $fontsize = $this->params->get('font-size', '1');
-                $tag = $this->params->get('tag', 'cgnewflag');
-                $document->addScriptOptions(
-                    'plg_content_cgnewflag',
-                    array(  'bg' => $bg, 'font' => $font,'fontsize' => $fontsize,
-                            'newstr' => $new,'posflg' => $this->params->get('posflg', 'before'),
-                            'tag' => $tag)
-                );
-                if ($this->params->get('posflg', 'before') == 'header') {
+                if (!$new) {
+                    continue;
+                }
+                $tag = $option->tag;
+                if ($option->posflg == 'header') {
                     $event->addResult($new);
-                } elseif ($this->params->get('posflg', 'before') == 'after') { // done in js
+                } elseif ($option->posflg == 'after') { // done in js
                     $event->getItem()->$title .= '<'.$tag.'>';
-                } elseif ($this->params->get('posflg', 'before') == 'before') { // done in js
+                } elseif ($option->posflg == 'before') { // done in js
                     $event->getItem()->$title = '<'.$tag.'>'.$event->getItem()->$title;
                 }
+                break;
             }
         }
+        $app = Factory::getApplication();
+        $plg	= 'media/plg_content_cgnewflag/';
+        $document = $app->getDocument();
+        $wa = $document->getWebAssetManager();
+        $wa->registerAndUseStyle('cgnewflag', $plg.'/css/cgnewflag.css');
+        if ($css = $this->params->get('css', '')) {
+            $customCSS = <<< CSS
+					$css
+					CSS;
+            $wa->addInlineStyle($customCSS, ['name' => 'cgnewflag.asset']);
+        }
+        if ((bool)$app->getConfig()->get('debug')) { // Mode debug
+            $document->addScript(''.URI::base(true).'/'.$plg.'/js/cgnewflag.js');
+        } else {
+            $wa->registerAndUseScript('cgnewflag', $plg.'/js/cgnewflag.js');
+        }
+        $jsparams = [];
+        foreach ($options as $option) {
+            $tag = $option->tag;
+            $bg = $option->bgtype == 'pick' ? $option->bgcolor : 'var('.$option->bgvar.')';
+            $font =  $option->fonttype == 'pick' ? $option->fontcolor : 'var('.$option->fontvar.')'  ;
+            $fontsize = $option->fontsize;
+            if ($option->type == 'badge') {
+                $style = "style='background-color:".$bg.";color:".$font.";font-size:".$fontsize."em;'";
+                $new = '<span class="cgnewflag_badge" '.$style.'>'.Text::_($option->badgetext).'</span>';
+            } else {
+                $style = "style='color:".$bg.";font-size:".$fontsize."em;'";
+                $new = '<i class="cgnewflag_icon fa-solid '.$option->icon.'" '.$style.' title="'.Text::_($option->badgetext).'"></i>';
+            }
+
+            $jsparams[] = array('newstr' => $new,'posflg' => $option->posflg,
+                        'tag' => $tag);
+        }
+        $document->addScriptOptions(
+            'plg_content_cgnewflag',
+            array('params' => $jsparams)
+        );
+
     }
 }

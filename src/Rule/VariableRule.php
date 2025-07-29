@@ -25,8 +25,7 @@ class VariableRule extends FormRule
         $ind = sizeOf($show) - 1;
         $el = explode(':', $show[$ind]);
         $type = $el[0];
-        $params = $input->get('params');
-        if ($params->$type  == 'pick') { // color picker : exit
+        if ($input->get($type)  == 'pick') { // color picker : exit
             return true;
         }
         if (!$value) {
