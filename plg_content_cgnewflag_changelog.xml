@@ -8,7 +8,7 @@
             <item>Update : 30/07/2025</item>
         </note>
         <change>
-            <item>Create tmpl to allow template overrides</item>
+            <item>Move process to tmpl folder to allow template overrides</item>
         </change>
 	</changelog>
 	<changelog>
