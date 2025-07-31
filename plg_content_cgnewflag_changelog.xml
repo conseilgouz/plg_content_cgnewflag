@@ -3,6 +3,19 @@
 		<element>cgnewflag</element>
 		<type>plugin</type>
 		<group>content</group>
+		<version>1.3.3</version>
+        <note>
+            <item>Update : 31/07/2025</item>
+        </note>
+        <fix>
+            <item>Force H1 tag check </item>
+            <item>Incorrect Custom CSS handling</item>
+        </fix>
+	</changelog>
+	<changelog>
+		<element>cgnewflag</element>
+		<type>plugin</type>
+		<group>content</group>
 		<version>1.3.2</version>
         <note>
             <item>Update : 30/07/2025</item>

@@ -36,16 +36,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
             }
-            if (!headers.length) {
-                header = document.querySelector('h1'); // suppose only one h1 tag
-                if (header) {
-                    if ((header.innerHTML.indexOf('<'+cgparams.tag+'>') >= 0) ||
-                        (document.title.indexOf('<'+cgparams.tag+'>') >= 0)){
-                        if (cgparams.posflg == 'before') {
-                            header.innerHTML = cgparams.newstr + header.innerHTML;
-                        } else {
-                            header.innerHTML += cgparams.newstr;
-                        }
+            header = document.querySelector('h1'); // suppose only one h1 tag
+            if (header) {
+                if ((header.innerHTML.indexOf('<'+cgparams.tag+'>') >= 0) ||
+                    (document.title.indexOf('<'+cgparams.tag+'>') >= 0)){
+                    if (cgparams.posflg == 'before') {
+                        header.innerHTML = cgparams.newstr + header.innerHTML;
+                    } else {
+                        header.innerHTML += cgparams.newstr;
                     }
                 }
             }

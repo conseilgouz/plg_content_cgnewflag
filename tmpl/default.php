@@ -9,9 +9,10 @@
 
 defined('_JEXEC') or die;
 
-use Joomla\CMS\Factory;
+// use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Uri\Uri;
+use Joomla\CMS\Factory;
 
 /**
  * Layout variables
@@ -79,7 +80,7 @@ use Joomla\CMS\Uri\Uri;
     $document = $app->getDocument();
     $wa = $document->getWebAssetManager();
     if ($this->params->get('css', '')) {
-        $wa->registerAndUseStyle('cgnewflagcustom',$this->params->get('css'));
+        $wa->addInlineStyle($this->params->get('css'));
     }
     $wa->registerAndUseStyle('cgnewflag', $plg.'/css/cgnewflag.css');
     if ((bool)$app->getConfig()->get('debug')) { // Mode debug
