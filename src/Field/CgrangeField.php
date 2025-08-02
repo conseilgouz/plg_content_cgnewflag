@@ -31,9 +31,9 @@ class CgrangeField extends RangeField
 
     protected $unit = "";
     /* module's information */
-    public $_ext = "mod";
-    public $_type = "cg";
-    public $_name = "memo";
+    public $_ext = "plg";
+    public $_type = "content";
+    public $_name = "cgnewflag";
 
     protected function getLayoutPaths()
     {

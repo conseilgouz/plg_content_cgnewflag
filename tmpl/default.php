@@ -53,11 +53,21 @@ use Joomla\CMS\Factory;
             $tmp = date('Y-m-d H:i:s', mktime(date("H"), date("i"), 0, date("m"), date("d") - intval($nbday), date("Y")));
             if ($option->type == 'badge') {
                 $style = "style='background-color:".$bg.";color:".$font.";font-size:".$fontsize."em;'";
-                $flag = '<'.$span.' class="cgnewflag_badge" '.$style.'>'.Text::_($option->badgetext).'</'.$span.'>';
+                if (!isset($option->badgetext)) {
+                    $text = "PLG_CONTENT_CGNEWFLAG_NEW";
+                } else {
+                    $text = $option->badgetext;
+                }
+                $flag = '<'.$span.' class="cgnewflag_badge" '.$style.'>'.Text::_($text).'</'.$span.'>';
                 $new = ($tmp < $event->getItem()->$date) ? $flag : '';
             } else {
                 $style = "style='color:".$bg.";font-size:".$fontsize."em;'";
-                $flag = '<i class="cgnewflag_icon fa-solid '.$option->icon.'" '.$style.' title="'.Text::_($option->badgetext).'"></i>';
+                if (!isset($option->badgetext)) {
+                    $text = "PLG_CONTENT_CGNEWFLAG_NEW";
+                } else {
+                    $text = $option->badgetext;
+                }
+                $flag = '<i class="cgnewflag_icon fa-solid '.$option->icon.'" '.$style.' title="'.Text::_($text).'"></i>';
                 $new = ($tmp < $event->getItem()->$date) ? $flag: '';
             }
             $jsparams[] = array('newstr' => $flag,'posflg' => $option->posflg,
