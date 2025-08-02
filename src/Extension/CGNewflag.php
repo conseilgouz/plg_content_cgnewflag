@@ -47,6 +47,7 @@ final class CGNewflag extends CMSPlugin implements SubscriberInterface
         // Render the layout
         ob_start();
         include $path;
-        $html .= ob_get_clean();
+        $html = ob_get_clean();
+        $event->addResult($html);
     }
 }
