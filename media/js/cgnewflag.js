@@ -45,6 +45,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     } else {
                         header.innerHTML += cgparams.newstr;
                     }
+                    if (header.innerHTML.indexOf('<'+cgparams.tag+'>') >= 0)  {
+                        header.innerHTML = header.innerHTML.replace('<'+cgparams.tag+'>','');
+                    }
+                    if (header.innerHTML.indexOf('&lt;'+cgparams.tag+'&gt;') >= 0)  {
+                        header.innerHTML = header.innerHTML.replace('&lt;'+cgparams.tag+'&gt;','');
+                    }
                 }
             }
             document.title = document.title.replace('<'+cgparams.tag+'>','');
