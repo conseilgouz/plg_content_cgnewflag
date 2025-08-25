@@ -2,12 +2,12 @@
 /**
  * @package		CGNewFlag content plugin
  * @author		ConseilGouz
- * @copyright	Copyright (C) 2024 ConseilGouz. All rights reserved.
+ * @copyright	Copyright (C) 2025 ConseilGouz. All rights reserved.
  * @license		GNU/GPL v2; see LICENSE.php
  **/
 namespace ConseilGouz\Plugin\Content\CGNewflag\Field;
 
-defined('JPATH_PLATFORM') or die;
+defined('_JEXEC') or die;
 use Joomla\CMS\Form\Field\RangeField;
 use Joomla\CMS\Factory;
 

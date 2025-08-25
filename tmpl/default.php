@@ -25,7 +25,7 @@ use Joomla\CMS\Factory;
  * @var   string   $path     Path to this file
  */
 
-    $input               = Factory::getApplication()->input;
+    $input               = Factory::getApplication()->getInput();
     $this->view          = $input->getCmd('view');
     $this->article_id    = $event->getItem()->id;
     $field = "";
@@ -93,11 +93,8 @@ use Joomla\CMS\Factory;
         $wa->addInlineStyle($this->params->get('css'));
     }
     $wa->registerAndUseStyle('cgnewflag', $plg.'/css/cgnewflag.css');
-    if ((bool)$app->getConfig()->get('debug')) { // Mode debug
-        $document->addScript(''.URI::base(true).'/'.$plg.'/js/cgnewflag.js');
-    } else {
-        $wa->registerAndUseScript('cgnewflag', $plg.'/js/cgnewflag.js');
-    }
+    $wa->registerAndUseScript('cgnewflag', $plg.'/js/cgnewflag.js');
+
     $document->addScriptOptions(
             'plg_content_cgnewflag',
             array('params' => $jsparams)
