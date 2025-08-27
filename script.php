@@ -104,15 +104,24 @@ class plgcontentcgnewflagInstallerScript
             $params = $res->params;
             if (substr($params, 0, 9) != '{"options') { // need to update parameters
                 $css = strpos($params, ',"css');
-                $new = '{"options":{"options0":'.substr($params, 0, $css).'}}'.substr($params, $css);
-                if (strpos($new,'bg-type') && !strpos($new,'bgtype')) { // version 1.2 to version 1.3
-                    $new = str_replace('bg-type','bgtype',$new);
-                    $new = str_replace('bg-color','bgcolor',$new);
-                    $new = str_replace('bg-var','bgvar',$new);
-                    $new = str_replace('font-type','fonttype',$new);
-                    $new = str_replace('font-color','fontcolor',$new);
-                    $new = str_replace('font-var','fontvar',$new);
-                    $new = str_replace('font-size','fontsize',$new);
+                if (!$css) {
+                    $cssstr = '"css":""';
+                } else {
+                    $cssstr = substr($params, $css);
+                }
+                $options = substr($params, 0, $css);
+                if (!$options) {// empty : set default
+                    $options = '{"datefield":"publish_up","posflg":"before","tag":"cgnewflag","contexts":"com_content.article,com_content.category,com_content.featured","length":"30","type":"badge","badgetext":"PLG_CONTENT_CGNEWFLAG_NEW","icon":"fa-star","bgtype":"pick","bgcolor":"#dc3545","bgvar":"","fonttype":"pick","fontcolor":"#ffffff","fontvar":"","fontsize":"1"}';
+                }
+                $new = '{"options":{"options0":'.$options.'},'.$cssstr.'}';
+                if (strpos($new, 'bg-type') && !strpos($new, 'bgtype')) { // version 1.2 to version 1.3
+                    $new = str_replace('bg-type', 'bgtype', $new);
+                    $new = str_replace('bg-color', 'bgcolor', $new);
+                    $new = str_replace('bg-var', 'bgvar', $new);
+                    $new = str_replace('font-type', 'fonttype', $new);
+                    $new = str_replace('font-color', 'fontcolor', $new);
+                    $new = str_replace('font-var', 'fontvar', $new);
+                    $new = str_replace('font-size', 'fontsize', $new);
                 }
                 $conditions = array(
                     $db->qn('type') . ' = ' . $db->q('plugin'),
