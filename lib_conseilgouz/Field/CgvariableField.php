@@ -1,19 +1,20 @@
 <?php
 /**
- * @package		CGNewFlag content plugin
- * @author		ConseilGouz
- * @copyright	Copyright (C) 2025 ConseilGouz. All rights reserved.
- * @license		GNU/GPL v2; see LICENSE.php
- **/
-namespace ConseilGouz\Plugin\Content\CGNewflag\Field;
+ * CG Variable field for Joomla 4.x/5.x/6.x
+ *
+ * @author     ConseilgGouz
+ * @copyright (C) 2025 www.conseilgouz.com. All Rights Reserved.
+ * @license    GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
+ */
+
+namespace ConseilGouz\Library\Field;
 
 defined('_JEXEC') or die;
-use Joomla\CMS\Form\Field\RangeField;
-use Joomla\CMS\Factory;
+use Joomla\CMS\Form\Field\TextField;
 
-class CgrangeField extends RangeField
+class CgvariableField extends TextField
 {
-    public $type = 'Cgrange';
+    public $type = 'Cgvariable';
 
     /**
      * Name of the layout being used to render the field
@@ -21,7 +22,7 @@ class CgrangeField extends RangeField
      * @var    string
      * @since  3.7
      */
-    protected $layout = 'cgrange';
+    protected $layout = 'cgvariable';
 
     /**
      * Unit
@@ -30,15 +31,11 @@ class CgrangeField extends RangeField
      */
 
     protected $unit = "";
-    /* module's information */
-    public $_ext = "plg";
-    public $_type = "content";
-    public $_name = "cgnewflag";
 
     protected function getLayoutPaths()
     {
         $paths = parent::getLayoutPaths();
-        $paths[] = dirname(__DIR__).'/../layouts';
+        $paths[] = JPATH_SITE.'/libraries/conseilgouz/layouts';
         return $paths;
 
     }
@@ -71,11 +68,5 @@ class CgrangeField extends RangeField
         $this->layoutData = $this->getLayoutData();
         return $this->layoutData;
     }
-    protected function getLayoutData()
-    {
-        $data      = parent::getLayoutData();
-        $extraData = ["unit" => $this->element['unit']
-        ];
-        return array_merge($data, $extraData);
-    }
+
 }

@@ -1,9 +1,11 @@
 /**
- * @package		CGNewFlag content plugin
- * @author		ConseilGouz
- * @copyright	Copyright (C) 2025 ConseilGouz. All rights reserved.
- * @license		GNU/GPL v3; see LICENSE.php
- **/
+* ConseilGouz Custom Field CG Range for Joomla 4.x/5.x/6.x 
+ *
+ * @author     ConseilgGouz
+* @copyright 		: Copyright (C) 2025 ConseilGouz. All rights reserved.
+* @license    		: https://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+*/
+
 .cgrange-label, .cgrange-reset, .cgrange-plus, .cgrange-minus {
 /*    margin-left: 1em;*/
     background-color: var(--btn-primary-bg);

@@ -3,7 +3,7 @@
 		<inlinehelp button="show"/>     
 	</config>
     <fieldset name="option" label="une option"  
-			addfieldprefix="ConseilGouz\Plugin\Content\CGNewflag\Field"
+			addfieldprefix="ConseilGouz\Library\Field"
 			addruleprefix="ConseilGouz\Plugin\Content\CGNewflag\Rule">
 		<field name="datefield"
 			type="radio" class="btn-group" default="publish_up"

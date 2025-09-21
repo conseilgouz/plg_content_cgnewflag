@@ -1,9 +1,10 @@
 /**
- * @package		CGNewFlag content plugin
- * @author		ConseilGouz
- * @copyright	Copyright (C) 2024 ConseilGouz. All rights reserved.
- * @license		GNU/GPL v2; see LICENSE.php
- **/
+* ConseilGouz Custom Field CG Range for Joomla 4.x/5.x/6.x
+*
+* @author           : ConseilgGouz
+* @copyright 		: Copyright (C) 2025 ConseilGouz. All rights reserved.
+* @license    		: https://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
+*/
 /* handle CGRange field */
 document.addEventListener('DOMContentLoaded', function() {
     let cgranges = document.querySelectorAll('.form-cgrange');
